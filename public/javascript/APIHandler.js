@@ -14,8 +14,14 @@ class APIHandler {
     });
   }
 
-  getOneRegister () {
-
+  getOneRegister (id) {
+    axios.get('http://localhost:8000/characters/id')
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   createOneRegister () {
@@ -34,13 +40,30 @@ class APIHandler {
 
   }
 
-  updateOneRegister () {
-
+  updateOneRegister (id, data) {
+    return axios.put ('http://localhost:8000/characters/id', data)
+    .then(response => {
+      console.log(response);
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+      return error;
+    });
   }
 
-  deleteOneRegister () {
+  deleteOneRegister (id) {
+    return axios.delete ('http://localhost:8000/characters/id')
+    .then(response => {
+      console.log(response);
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+      return error;
+    });
 
   }
 }
 const apiHandler = new APIHandler('http://localhost:8000');
-apiHandler.getFullList();
+apiHandler.deleteOneRegister();
